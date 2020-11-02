@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.11...3.18)
 project(
   tribl
   VERSION 0.1
-  DESCRIPTION "A testing project"
+  DESCRIPTION "A tri-boolean logic project"
   LANGUAGES CXX)
 
 # Only do these if this is the main project, and not if it is included through add_subdirectory

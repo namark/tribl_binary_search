@@ -1,4 +1,4 @@
-# Documentation for A Test Porject                                      {#mainpage}
+# Documentation for Tri-Boolean Logic Porject                                      {#mainpage}
 
-This is the documentation for A Test.
+Author: George Shagov
 

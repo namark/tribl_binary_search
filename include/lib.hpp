@@ -8,8 +8,19 @@ namespace tribl
 {
     enum class CMP { LESS=-1, EQ=0, GRTR=1 };
 
+    // IMU: these two simple funcions are main perforance heaters
+    // couple of considerations:
+    // 1. It would have been ideally of cause had microprocessor manufactures
+    //    had supported atomic operation on hardware level, reducing
+    //    comparision of two numbers to tri-boolean value
+    //    that would be just fantastic, but fantastic doesn't mean realistic :-)
+    // 2. We can use bit's operations here, but that would be only for signed numbers
+    // 
+    // this is for a signed data (string in our case)
     template <typename T>
     inline CMP sign(T x1) { return (x1 > 0) ? CMP::GRTR : ((x1 < 0) ? CMP::LESS : CMP::EQ); }
+    // unsigned
+    //        yes, having two simial functions looks odd, just for testing purposes
     template <typename T>
     inline CMP sign(T x1, T x2) { return (x1 > x2) ? CMP::GRTR : ((x1 < x2) ? CMP::LESS : CMP::EQ); }
 
@@ -42,6 +53,8 @@ namespace tribl
             _DistanceType __half = __len >> 1;
             _ForwardIterator __middle = __first;
             std::advance(__middle, __half);
+            // GS:
+            //      dereferencing iterator here
             switch(__comp(*__middle, __val))
             {
                 case CMP::LESS:
@@ -53,6 +66,9 @@ namespace tribl
                     __len = __half;
                     break;
                 case CMP::EQ:
+                    // Hamlet Act 5, scene 2, 280–283
+                    // Osric:
+                    //          A hit, a very palpable hit.
                     return __middle;
             }
         }

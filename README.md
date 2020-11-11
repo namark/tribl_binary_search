@@ -32,3 +32,7 @@ To build docs (requires Doxygen, output in `build/docs/html`):
 cmake --build build --target docs
 ```
 
+Reference
+
+ [Improving Binary Search Algorithm by Three Boolean Logic](https://www.codeproject.com/Tips/5284126/Improving-Binary-Search-Algorithm-by-Three-Boolean).
+

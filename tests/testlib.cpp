@@ -23,6 +23,19 @@ TEST_CASE( "Test 1", "[main]" )
         REQUIRE(*tribl::lower_bound(s_integers.begin(), s_integers.end(), 100) == 100);
         REQUIRE(*tribl::lower_bound(s_integers.begin(), s_integers.end(), 999) == 999);
         REQUIRE(*tribl::lower_bound(s_integers.begin(), s_integers.end(), -1) == s_integers[0]);
+
+        std::vector a {1,2,3,3,4,5};
+        // lower_bound ---^
+        // upper_bound -------^
+        // equal_range ---(3,3)
+        // tribl -----------^
+
+        REQUIRE(std::lower_bound(a.begin(), a.end(), 3) == a.begin()+2);
+        REQUIRE(std::upper_bound(a.begin(), a.end(), 3) == a.begin()+4);
+        REQUIRE(std::equal_range(a.begin(), a.end(), 3) ==
+            std::pair{a.begin()+2,a.begin()+4} );
+
+        REQUIRE(tribl::lower_bound(a.begin(), a.end(), 3) == a.begin()+3);
     }
 
     SECTION("Strings")
